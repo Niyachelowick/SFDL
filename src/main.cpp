@@ -15,7 +15,9 @@ int main()
 {
     auto window = sf::RenderWindow(sf::VideoMode({1200,608}), "CMake SFML Project");
     window.setFramerateLimit(30);
-    //origen={window.getSize().x/2,window.getSize().y/2};
+    float oriX=window.getSize().x/2;
+    float oriY=window.getSize().y/2;
+    origen={oriX,oriY};
 /************************** Here Starts the parabolic shoot example ****************/
     // //declaring and instansing a physicVector:
     // physicVector *Velocity,*gravity,*velCaida;
