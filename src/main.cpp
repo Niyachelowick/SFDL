@@ -8,14 +8,14 @@ To run each example, just uncomment the content of the section you wanna test. :
 
 sf::CircleShape _bullet(8,16);
 sf::Vector2f origen;
-bullet *bu1[16];
+
 
 
 int main()
 {
     auto window = sf::RenderWindow(sf::VideoMode({1200,608}), "CMake SFML Project");
     window.setFramerateLimit(30);
-    origen={window.getSize().x/2,window.getSize().y/2};
+    //origen={window.getSize().x/2,window.getSize().y/2};
 /************************** Here Starts the parabolic shoot example ****************/
     // //declaring and instansing a physicVector:
     // physicVector *Velocity,*gravity,*velCaida;
@@ -55,9 +55,11 @@ int main()
 /********************** Here ends the parabolic shoot expamle ****************************/    
 
 /****************Here starts Danmaku pincipies example*****************/
+    const int quantity=4;
+    bullet *bu1[quantity];
     //first, we use a for loop to initialice the bullet array
-    for(uint8_t i=0;i<16;i++){
-        float degs=i*(360.0/16);//The class uses by default sexagecimal degrees 
+    for(uint8_t i=0;i<quantity;i++){
+        float degs=i*(360.0/quantity);//The class uses by default sexagecimal degrees 
         //we can intiate the bullet by the same parameters of a physicVector
         bu1[i]=new bullet(7,degs,origen);
         // if you wanna curve the trayectories, you can add an angular modifier
@@ -73,13 +75,13 @@ int main()
                     window.close();
                 }
             }
-            for(uint8_t i=0;i<16;i++){
+            for(uint8_t i=0;i<quantity;i++){
                 bu1[i]->move();// thell the bullet increas its position.
             }
             // you can comment the "window.clear()" to see how the patter will apear
             // when object pooling get implemented.
             //window.clear();
-            for(uint8_t i=0;i<16;i++){
+            for(uint8_t i=0;i<quantity;i++){
                 // indicate to the bullet in wich render target will apear.
                 bu1[i]->drawTo(window);
             }
