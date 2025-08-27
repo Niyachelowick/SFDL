@@ -30,7 +30,11 @@ class physicVector{
     float getDirection();
 };
 
-physicVector::physicVector(){}
+physicVector::physicVector(){
+    this->direction=0;
+    this->magnitude=0;
+    this->decompose();
+}
 
 physicVector::physicVector(float mag, float dir,sf::Vector2f ogn){
     this->magnitude=mag;
