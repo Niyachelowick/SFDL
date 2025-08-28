@@ -67,7 +67,7 @@ int main()
         // if you wanna curve the trayectories, you can add an angular modifier
         //the angular modifier will change orientation of the velocity vector by a delta
         // bu1[i]->angularModifier(-0.05);
-        bu1[i]->angularModifier(4);
+        bu1[i]->angularModifier(3);
     }
     while (window.isOpen())
         {
@@ -79,7 +79,7 @@ int main()
                 }
             }
             for(uint8_t i=0;i<quantity;i++){
-                bu1[i]->move();// thell the bullet increas its position.
+                bu1[i]->move();// thell the bullet increase its position.
             }
             // you can comment the "window.clear()" to see how the patter will apear
             // when object pooling get implemented.
