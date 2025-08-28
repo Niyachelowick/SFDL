@@ -16,7 +16,12 @@ public:
     void angularModifier(float delta);
 };
 
-bullet::bullet(){}
+bullet::bullet(){
+    dot.setRadius(8);
+    dot.setPointCount(8);
+    dot.setPosition(origen);
+    velocidad=new physicVector();
+}
 
 bullet::bullet(float vel,float dir,sf::Vector2f origen)
 {
