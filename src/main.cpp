@@ -66,7 +66,8 @@ int main()
         bu1[i]=new bullet(7,degs,origen);
         // if you wanna curve the trayectories, you can add an angular modifier
         //the angular modifier will change orientation of the velocity vector by a delta
-        bu1[i]->angularModifier(-0.05);
+        // bu1[i]->angularModifier(-0.05);
+        bu1[i]->angularModifier(4);
     }
     while (window.isOpen())
         {

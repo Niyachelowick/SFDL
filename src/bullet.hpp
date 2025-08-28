@@ -7,6 +7,7 @@ private:
     float modifier;
     sf::CircleShape dot;
     bool trayectoryModified=false;
+    float mdX=0,mdy=0;
 public:
     bullet();
     bullet(float vel,float dir,sf::Vector2f origen);
@@ -19,7 +20,7 @@ public:
 bullet::bullet(){
     dot.setRadius(8);
     dot.setPointCount(8);
-    dot.setPosition(origen);
+    dot.setPosition({0,0});
     velocidad=new physicVector();
 }
 
@@ -37,8 +38,11 @@ bullet::~bullet()
 
 void bullet::move(){
     if(trayectoryModified){
-       velocidad->setDirection(velocidad->getDirection()+modifier);
-       velocidad->decompose();
+    //    velocidad->setDirection(velocidad->getDirection()+modifier);
+    //    velocidad->decompose();
+        float newVX= velocidad->getComponents().x*mdX -velocidad->getComponents().y* mdy;
+        float newVY=velocidad->getComponents().x*mdy + velocidad->getComponents().y*mdX;
+        velocidad->setComponents({newVX,newVY});
     }    
     velocidad->updateOrigin();
     dot.move(velocidad->getComponents());
@@ -50,5 +54,7 @@ void bullet::drawTo(sf::RenderWindow &window){
 
 void bullet::angularModifier(float delta){
     this->modifier=delta;
+    this->mdX=cos(delta*physicVector::degsToRads);
+    this->mdy=sin(delta*physicVector::degsToRads);
     this->trayectoryModified=true;
 }

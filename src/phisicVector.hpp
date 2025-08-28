@@ -4,12 +4,12 @@
 
 class physicVector{
     private:
-    const float degsToRads=0.01745329252, radsToDegs=57.2957795056;
     bool isDeg=true;
     sf::Vector2f resultantPoint,oirigin,components;
     float magnitude;
     float direction;
     public:
+    static constexpr float degsToRads=0.01745329252, radsToDegs=57.2957795056;
     const bool _rad=false,_grad=true;
     physicVector();
     physicVector(float mag,float dir,sf::Vector2f ogn);
@@ -27,6 +27,7 @@ class physicVector{
     float getMagitude();
     void setDirection(float dir);
     void setOrigin(sf::Vector2f ong);
+    void setComponents(sf::Vector2f setXY);
     float getDirection();
 };
 
@@ -122,4 +123,8 @@ void physicVector::setDirection(float dir){
 
 void physicVector::setOrigin(sf::Vector2f ong){
     this->oirigin=ong;
+}
+
+void physicVector::setComponents(sf::Vector2f setXY){
+    this->components=setXY;
 }
