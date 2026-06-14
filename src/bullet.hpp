@@ -18,7 +18,7 @@ public:
 };
 
 bullet::bullet(){
-    dot.setRadius(8);
+    dot.setRadius(4);
     dot.setPointCount(8);
     dot.setPosition({0,0});
     velocidad=new physicVector();
@@ -26,7 +26,7 @@ bullet::bullet(){
 
 bullet::bullet(float vel,float dir,sf::Vector2f origen)
 {
-    dot.setRadius(8);
+    dot.setRadius(4);
     dot.setPointCount(8);
     dot.setPosition(origen);
     velocidad=new physicVector(vel,dir,origen);
@@ -38,9 +38,7 @@ bullet::~bullet()
 
 void bullet::move(){
     if(trayectoryModified){
-    //    velocidad->setDirection(velocidad->getDirection()+modifier);
-    //    velocidad->decompose();
-        float newVX= velocidad->getComponents().x*mdX -velocidad->getComponents().y* mdy;
+        float newVX= velocidad->getComponents().x*mdX - velocidad->getComponents().y* mdy;
         float newVY=velocidad->getComponents().x*mdy + velocidad->getComponents().y*mdX;
         velocidad->setComponents({newVX,newVY});
     }    
