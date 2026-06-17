@@ -5,12 +5,12 @@
 class physicVector{
     private:
     bool isDeg=true;
-    sf::Vector2f resultantPoint,oirigin,components;
+    sf::Vector2f resultantPoint,origin,components;
     float magnitude;
     float direction;
     public:
     static constexpr float degsToRads=0.01745329252, radsToDegs=57.2957795056;
-    const bool _rad=false,_grad=true;
+    static constexpr bool _rad=false,_grad=true;
     physicVector();
     physicVector(float mag,float dir,sf::Vector2f ogn);
     physicVector(float mag,float dir);
@@ -40,7 +40,7 @@ physicVector::physicVector(){
 physicVector::physicVector(float mag, float dir,sf::Vector2f ogn){
     this->magnitude=mag;
     this->direction=dir;
-    this->oirigin=ogn;
+    this->origin=ogn;
     if(this->isDeg)direction=dir*this->degsToRads;
     this->decompose();    
 }
@@ -48,8 +48,8 @@ physicVector::physicVector(float mag, float dir,sf::Vector2f ogn){
 physicVector::physicVector(float mag, float dir){
     this->magnitude=mag;
     this->direction=dir;
-    this->oirigin.x=0;
-    this->oirigin.y=0;
+    this->origin.x=0;
+    this->origin.y=0;
     if(this->isDeg)direction=dir*this->degsToRads;
     this->decompose();    
 }
@@ -57,8 +57,8 @@ physicVector::physicVector(float mag, float dir){
 void physicVector::decompose(){
     components.x=magnitude*cos(direction);
     components.y=magnitude*sin(direction);
-    resultantPoint.x=oirigin.x+components.x;
-    resultantPoint.y=oirigin.y+components.y;
+    resultantPoint.x=origin.x+components.x;
+    resultantPoint.y=origin.y+components.y;
 }
 
 void physicVector::setAngularUnit(bool angUnit){
@@ -66,7 +66,7 @@ void physicVector::setAngularUnit(bool angUnit){
 }
 
 void physicVector::updateOrigin(){
-    oirigin=resultantPoint;
+    origin=resultantPoint;
 }
 
 void physicVector::add(physicVector anotherVector){
@@ -122,7 +122,7 @@ void physicVector::setDirection(float dir){
 }
 
 void physicVector::setOrigin(sf::Vector2f ong){
-    this->oirigin=ong;
+    this->origin=ong;
 }
 
 void physicVector::setComponents(sf::Vector2f setXY){
